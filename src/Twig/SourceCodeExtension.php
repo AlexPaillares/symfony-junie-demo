@@ -17,6 +17,7 @@ use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TemplateWrapper;
 use Twig\TwigFunction;
+
 use function Symfony\Component\String\u;
 
 /**
@@ -71,7 +72,8 @@ final class SourceCodeExtension extends AbstractExtension
             return '';
         }
 
-        return \sprintf('<a href="%s" title="Click to open this file" class="file_link">%s</a> at line %d',
+        return \sprintf(
+            '<a href="%s" title="Click to open this file" class="file_link">%s</a> at line %d',
             htmlspecialchars($link, \ENT_COMPAT | \ENT_SUBSTITUTE, $twig->getCharset()),
             htmlspecialchars($text, \ENT_COMPAT | \ENT_SUBSTITUTE, $twig->getCharset()),
             $line,
