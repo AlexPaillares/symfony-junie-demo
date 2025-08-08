@@ -1,3 +1,5 @@
+# Trying to show how the jetbrains-junie integration on Github.com is capable of
+
 Symfony Demo Application
 ========================
 
