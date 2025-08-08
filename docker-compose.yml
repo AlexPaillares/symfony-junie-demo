@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  php:
+    build : ./docker/php
+    container_name: sf_php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html:cached
+      - ./docker/apache.conf:/etc/apache2/sites-available/000-default.conf:ro
+    working_dir: /var/www/html
+    environment:
+      SYMFONY_TRUSTED_PROXIES: 127.0.0.1
+      SYMFONY_TRUSTED_HEADERS: x-forwarded-for,x-forwarded-host,x-forwarded-proto,x-forwarded-port
+    networks:
+      - sf_net
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14-alpine
+    container_name: sf_db
+    environment:
+      POSTGRES_USER: symfony
+      POSTGRES_PASSWORD: change_me
+      POSTGRES_DB: symfony
+    ports:
+      - "5432:5432"  # Expose to host
+    volumes:
+      - sf_pgdata:/var/lib/postgresql/data
+    networks:
+      - sf_net
+
+networks:
+  sf_net:
+
+volumes:
+  sf_pgdata:

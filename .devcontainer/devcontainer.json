@@ -1,0 +1,9 @@
+{
+  "name": "Symfony Demo (docker-compose + Junie)",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "php",
+  "workspaceFolder": "/var/www/html",
+  "shutdownAction": "stopCompose",
+  "forwardPorts": [8080],
+  "postStartCommand": "composer install || true"
+}
