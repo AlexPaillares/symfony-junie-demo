@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Junie Bot Response{% endblock %}
+
+{% block body_id %}junie-response{% endblock %}
+
+{% block main %}
+    <div class="junie-response">
+        <h1>Yes, I'm here my dear! 👋</h1>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Junie Bot Status</h5>
+                <p class="card-text">I'm up and running, ready to assist you!</p>
+                <p class="card-text">
+                    <small class="text-muted">Current time: {{ current_time|date('F j, Y, g:i a') }}</small>
+                </p>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <p>How can I help you today?</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section">
+        <div class="well">
+            <h4>About Junie</h4>
+            <p>
+                Junie is an autonomous programmer developed by JetBrains, 
+                designed to assist with programming tasks and answer questions.
+            </p>
+        </div>
+    </div>
+{% endblock %}
