@@ -20,7 +20,6 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\AbstractUnicodeString;
 use Symfony\Component\String\Slugger\SluggerInterface;
-
 use function Symfony\Component\String\u;
 
 final class AppFixtures extends Fixture

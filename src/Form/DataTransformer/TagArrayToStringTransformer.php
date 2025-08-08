@@ -14,7 +14,6 @@ namespace App\Form\DataTransformer;
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use Symfony\Component\Form\DataTransformerInterface;
-
 use function Symfony\Component\String\u;
 
 /**
@@ -87,7 +86,7 @@ final readonly class TagArrayToStringTransformer implements DataTransformerInter
         $result = [];
 
         foreach ($strings as $string) {
-            $result[] = trim($string);
+            $result[] = mb_trim($string);
         }
 
         return $result;
