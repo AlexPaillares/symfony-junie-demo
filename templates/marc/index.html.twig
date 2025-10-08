@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Currency rates from USD{% endblock %}
+
+{% block body %}
+    <div class="container my-4">
+        <h1 class="mb-3">Currency exchange rates from <strong>{{ base }}</strong></h1>
+
+        {% if error %}
+            <div class="alert alert-warning" role="alert">{{ error }}</div>
+        {% endif %}
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Currency</th>
+                        <th scope="col">Rate ({{ base }} → currency)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for code in currencies %}
+                    <tr>
+                        <td><code>{{ code }}</code></td>
+                        <td>
+                            {% set rate = rates[code] ?? null %}
+                            {% if rate is not null %}
+                                {{ rate|number_format(6, '.', ',') }}
+                            {% else %}
+                                <em>N/A</em>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
